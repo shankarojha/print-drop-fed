@@ -1,1 +1,26 @@
-<p>signup works!</p>
+<div class="row signup-row">
+    <div class="col-12 signup-banner">
+        <div class="signupForm">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignupSubmit()">
+                <p>
+                    <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
+                      <mat-label>Name</mat-label>
+                      <input matInput id="name" formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
+                        <mat-label>Email</mat-label>
+                        <input matInput id="email" formControlName="email" type="email">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput id="phoneNumber" formControlName="phoneNumber" type="number">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
+                        <mat-label>Address</mat-label>
+                        <input matInput id="address" formControlName="address">
+                      </mat-form-field>
+                  </p>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.signup-banner{
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-row{
+    height: 80vh;
+}
+
+.signupForm{
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    box-shadow: 15px 15px black;
+    width:30vw;
+}
+
+mat-form-field{
+    color:black !important;
+}
