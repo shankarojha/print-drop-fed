@@ -1,24 +1,44 @@
-.signup-banner{
-    background-color: bisque;
+.signupRow {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.signup-row{
-    height: 80vh;
-}
-
-.signupForm{
-    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+  }
+  
+  .signupForm {
+    overflow: auto; /* Enable scrolling when content overflows */
+    background-color: #fbe54334;
     display: flex;
+    flex-direction: column; /* Stack form fields vertically */
     align-items: center;
-    justify-content: center;
-    border: 2px solid black;
+    justify-content: flex-start; /* Align from the top */
+    border: 3px solid rgb(50, 160, 197);
     box-shadow: 15px 15px black;
-    width:30vw;
-}
-
-mat-form-field{
-    color:black !important;
-}
+    width: 45%;
+    height: 75vh; /* Constrained height */
+    padding: 10px; /* Padding around the content */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+  }
+  .inputField {
+    padding: 3px;
+    width: 100%;
+  }
+  
+  input {
+    padding-right: 30px;
+  }
+  
+  /* For mobile devices */
+  @media (max-width: 600px) {
+    .signupForm {
+      width: 90%; /* On mobile, the signup form takes up 90% of the width */
+    }
+  }
+  
+  /* For tablets */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .signupForm {
+      width: 70%; /* On tablets, the signup form takes up 70% of the width */
+    }
+  }
+  

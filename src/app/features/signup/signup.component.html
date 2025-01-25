@@ -1,26 +1,66 @@
-<div class="row signup-row">
-    <div class="col-12 signup-banner">
-        <div class="signupForm">
-            <form [formGroup]="signUpForm" (ngSubmit)="onSignupSubmit()">
-                <p>
-                    <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
-                      <mat-label>Name</mat-label>
-                      <input matInput id="name" formControlName="name">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
-                        <mat-label>Email</mat-label>
-                        <input matInput id="email" formControlName="email" type="email">
-                      </mat-form-field>
-                      <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
-                        <mat-label>Phone Number</mat-label>
-                        <input matInput id="phoneNumber" formControlName="phoneNumber" type="number">
-                      </mat-form-field>
-                      <mat-form-field appearance="outline" class="center-label" floating="true" filled-focus-label-text-color="black">
-                        <mat-label>Address</mat-label>
-                        <input matInput id="address" formControlName="address">
-                      </mat-form-field>
-                  </p>
-            </form>
-        </div>
-    </div>
+<div class="container">
+  <div class="row signupRow">
+      
+    <form class="signupForm" [formGroup]="signUpForm" (ngSubmit)="onSignupSubmit()">
+      <h1 class="mt-5">Sign Up</h1>
+      <p class="mt-2">Sign up to continue</p>
+      
+              <mat-form-field appearance="outline" class="center-label inputField mt-3" floating="true">
+                <mat-label>Name</mat-label>
+                <input class="inputClass" matInput id="name" formControlName="name">
+              </mat-form-field>
+              
+            
+            
+              <mat-form-field appearance="outline" class="center-label inputField" floating="true">
+                <mat-label>Email</mat-label>
+                <input class="inputClass" matInput id="email" formControlName="email" type="email">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="center-label inputField" floating="true">
+                <mat-label>Enter your password</mat-label>
+                <input class="inputClass" formControlName="password" matInput [type]="hidePassword() ? 'password' : 'text'" />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickHideEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hidePassword()"
+                >
+                  <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            
+              
+                <mat-form-field appearance="outline" class="center-label inputField" floating="true">
+                  <mat-label>Phone Number</mat-label>
+                  <input class="inputClass" matInput id="phoneNumber" formControlName="phoneNumber" type="number">
+                </mat-form-field>
+              
+              
+                <mat-form-field appearance="outline" class="center-label inputField" floating="true">
+                  <mat-label>Address</mat-label>
+                  <input class="inputClass" matInput id="address" formControlName="address" rows="3" type="text">
+                </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="center-label inputField inputFieldClubbed" floating="true">
+                    <mat-label>City</mat-label>
+                    <input class="inputClass" matInput id="city" formControlName="city">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="center-label inputField inputFieldClubbedLast" floating="true">
+                    <mat-label>Country</mat-label>
+                    <input class="inputClass" matInput id="country" formControlName="country">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="center-label inputField inputFieldClubbedLast" floating="true">
+                    <mat-label>Pin Code</mat-label>
+                    <input class="inputClass" matInput id="pinCode" formControlName="pinCode">
+                  </mat-form-field>
+              
+              
+          
+    </form>
+</div>
+
 </div>

@@ -2,6 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "print-drop": {
       "projectType": "application",
@@ -29,8 +34,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "@angular/material/prebuilt-themes/magenta-violet.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/theme.scss"
             ],
             "scripts": []
           },
@@ -89,8 +94,8 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/magenta-violet.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/theme.scss"
             ],
             "scripts": []
           }
