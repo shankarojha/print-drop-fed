@@ -19,6 +19,7 @@
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
     scrollbar-width: none; /* For Firefox */
   }
+   
   .inputField {
     padding: 3px;
     width: 100%;
@@ -27,6 +28,27 @@
   input {
     padding-right: 30px;
   }
+
+  mat-icon {
+    transition: opacity 0.3s ease, transform 0.5s ease;
+  }
+  
+  mat-icon.fade {
+    opacity: 1;  /* Make the icon fade out */
+    transform: scale(0.9);  /* Optional: Slightly shrink the icon when fading out */
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}
   
   /* For mobile devices */
   @media (max-width: 600px) {
