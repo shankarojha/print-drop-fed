@@ -1,22 +1,24 @@
 import { Component, ChangeDetectionStrategy, signal, OnDestroy } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../core/services/user.service';
 import { Subscription } from 'rxjs';
+import { StateService } from '../../core/services/state.service';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule,MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, CommonModule],
-  providers:[UserService],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, CommonModule, MatRadioModule],
+  providers: [UserService, StateService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignupComponent implements OnDestroy{
+export class SignupComponent implements OnDestroy {
 
   /** defining reactive signup forms */
   hidePassword = signal(true);
@@ -32,34 +34,34 @@ export class SignupComponent implements OnDestroy{
     userType: new FormControl('printee', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)]),
   })
-/**Ends */
+  /**Ends */
 
-  signupResponse! :Subscription;
-  constructor( private userService:UserService){}
+  signupResponse!: Subscription;
+  constructor(private userService: UserService, private stateService : StateService) { }
 
-  onSignupSubmit(){
+  onSignupSubmit() {
     console.log(this.signUpForm.value)
-    if(this.signUpForm.valid){
+    if (this.signUpForm.valid) {
       this.userService.signup(this.signUpForm.value).subscribe({
-        next: (response)=>{
+        next: (response) => {
           return this.signupResponse = response
         },
-        error: (error)=> console.error(error),
-        complete:()=>console.log("complete")
-    })
+        error: (error) => console.error(error),
+        complete: () => console.log("complete")
+      })
     }
   }
 
-  
+
   clickHideEvent(event: MouseEvent) {
     this.hidePassword.set(!this.hidePassword());
     event.stopPropagation();
   }
 
-  
+
 
   ngOnDestroy(): void {
-    if(this.signupResponse){
+    if (this.signupResponse) {
       this.signupResponse.unsubscribe();
     }
   }

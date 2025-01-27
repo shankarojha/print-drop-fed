@@ -41,7 +41,7 @@ html {
     --mat-sys-on-tertiary-fixed-variant: #0000ef;
     --mat-sys-outline: #32A0C5;
     --mat-sys-outline-variant: #c4c6d0;
-    --mat-sys-primary: #005cbb;
+    --mat-sys-primary: #32A0C5;
     --mat-sys-primary-container: #d7e3ff;
     --mat-sys-primary-fixed: #d7e3ff;
     --mat-sys-primary-fixed-dim: #abc7ff;
@@ -90,6 +90,16 @@ h1{
 
 }
 
+.submitButton{
+  width: 150px; /* Set the width */
+  border-radius: 5px !important; /* Add rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; 
+  font-size: 16px !important; /* Font size */
+  font-weight: 400 !important;
+  padding: 20px 0 20px 0 !important;
+}
+
 /* For mobile devices */
 @media (max-width: 600px) {
     mat-form-field {
@@ -97,6 +107,11 @@ h1{
       height: 30px !important;
       margin: 28px;
     }
+    .submitButton{
+      width: 30%; 
+      margin-top: 30px;
+    }
+
   }
   
   /* For tablets */
