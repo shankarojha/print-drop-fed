@@ -1,1 +1,61 @@
-<p>login works!</p>
+<div class="container">
+  <div class="row signupRow">
+    <form
+      class="loginForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="onLoginSubmit()"
+    >
+      <h1 class="mt-5">Login</h1>
+      <p class="mt-2">Login to continue</p>
+
+      <mat-form-field
+        appearance="outline"
+        class="center-label inputField"
+        floating="true"
+      >
+        <mat-label>Email</mat-label>
+        <input
+          class="inputClass"
+          matInput
+          id="email"
+          formControlName="email"
+          type="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="center-label inputField"
+        floating="true"
+      >
+        <mat-label>Enter your password</mat-label>
+        <input
+          class="inputClass"
+          formControlName="password"
+          matInput
+          [type]="hidePassword() ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickHideEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword()"
+        >
+          <mat-icon [ngClass]="{ fade: hidePassword() }">{{
+            hidePassword() ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button
+        class="submitButton button"
+        mat-stroked-button
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>

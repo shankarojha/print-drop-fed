@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class UserService {
 
   private apiUrl = 'http://localhost:8005/api/users'
-  private _global = new BehaviorSubject<string>('initial')
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +16,9 @@ export class UserService {
     return this.http.post(url, data)
   }
 
-  public global = this._global.asObservable();
-
-  updateGlobal(str:string){
-    this._global.next(str)
+  login(data:object):Observable<any>{
+    const url = `${this.apiUrl}/login`;
+    return this.http.post(url,data)
   }
 
 }

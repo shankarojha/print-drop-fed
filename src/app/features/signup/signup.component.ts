@@ -8,12 +8,14 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../core/services/user.service';
 import { Subscription } from 'rxjs';
 import { StateService } from '../../core/services/state.service';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { SnackbarService } from '../../core/services/snackbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, CommonModule, MatRadioModule],
-  providers: [UserService, StateService],
+  providers: [UserService, StateService, SnackbarService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -35,21 +37,32 @@ export class SignupComponent implements OnDestroy {
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)]),
   })
   /**Ends */
-
-  signupResponse!: Subscription;
-  constructor(private userService: UserService, private stateService : StateService) { }
+  private subscriptions: Subscription = new Subscription()
+  constructor(private userService: UserService, private stateService: StateService, private snackbarService: SnackbarService, private router: Router) { }
 
   onSignupSubmit() {
     console.log(this.signUpForm.value)
     if (this.signUpForm.valid) {
-      this.userService.signup(this.signUpForm.value).subscribe({
+      this.stateService.updateIsLoading(true);
+      const signupSub = this.userService.signup(this.signUpForm.value).subscribe({
         next: (response) => {
-          return this.signupResponse = response
+          if (response?.status === 201) {
+            this.snackbarService.success("Signup Successful");
+            this.stateService.updateIsLoading(false);
+            this.router.navigate(['/login'])
+          }
         },
-        error: (error) => console.error(error),
-        complete: () => console.log("complete")
+        error: (error) => { 
+          this.stateService.updateIsLoading(false);
+          if(error?.error?.error?.code === 11000){
+            this.snackbarService.error("User already exists") 
+          }
+        },
       })
+
+      this.subscriptions.add(signupSub)
     }
+
   }
 
 
@@ -61,8 +74,8 @@ export class SignupComponent implements OnDestroy {
 
 
   ngOnDestroy(): void {
-    if (this.signupResponse) {
-      this.signupResponse.unsubscribe();
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
     }
   }
 

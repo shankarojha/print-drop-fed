@@ -5,11 +5,12 @@ import { Injectable, signal } from '@angular/core';
 })
 export class StateService {
 
-globalState = signal<string>('initial')
+isLoading = signal<boolean>(false)
 
   constructor() { }
 
-  updateGlobalState(str:string){
-    this.globalState.set(str)
+  updateIsLoading(isLoadingData:boolean){
+    console.log("isLoadingCalled", isLoadingData)
+    this.isLoading.set(isLoadingData)
   }
 }

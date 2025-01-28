@@ -1,0 +1,66 @@
+.signupRow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .loginForm {
+    overflow: auto; /* Enable scrolling when content overflows */
+    background-color: #fbe54334;
+    display: flex;
+    flex-direction: column; /* Stack form fields vertically */
+    align-items: center;
+    justify-content: flex-start; /* Align from the top */
+    border: 3px solid rgb(50, 160, 197);
+    box-shadow: 15px 15px black;
+    width: 45%;
+    height: 75vh; /* Constrained height */
+    padding: 10px; /* Padding around the content */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+  }
+   
+  .inputField {
+    padding: 3px;
+    width: 100%;
+  }
+  
+  input {
+    padding-right: 30px;
+  }
+
+  mat-icon {
+    transition: opacity 0.3s ease, transform 0.5s ease;
+  }
+  
+  mat-icon.fade {
+    opacity: 1;  /* Make the icon fade out */
+    transform: scale(0.9);  /* Optional: Slightly shrink the icon when fading out */
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}
+  
+  /* For mobile devices */
+  @media (max-width: 600px) {
+    .signupForm {
+      width: 90%; /* On mobile, the signup form takes up 90% of the width */
+    }
+  }
+  
+  /* For tablets */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .signupForm {
+      width: 70%; /* On tablets, the signup form takes up 70% of the width */
+    }
+  }
+  
