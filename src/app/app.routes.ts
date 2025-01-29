@@ -10,7 +10,7 @@ export const routes: Routes = [
     loadComponent:()=>import('./features/signup/signup.component').then((m)=> m.SignupComponent)
   },
   {path:'printee-landing',
-    loadComponent:()=> import('./features/printee-landing/printee-landing.component').then((m)=>m.PrinteeLandingComponent),
+    loadComponent:()=> import('./features/admin/admin.component').then((m)=>m.AdminComponent),
     canActivate:[authGuard]
   },
   {

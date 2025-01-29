@@ -33,7 +33,7 @@ export class SignupComponent implements OnDestroy {
     country: new FormControl("India", Validators.required),
     city: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
-    userType: new FormControl('printee', [Validators.required]),
+    userType: new FormControl('client', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/)]),
   })
   /**Ends */

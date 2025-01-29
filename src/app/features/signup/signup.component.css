@@ -2,16 +2,17 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    align-items: center;
+    height: 100dvh;
   }
   
   .signupForm {
     overflow: auto; /* Enable scrolling when content overflows */
-    background-color: #fbe54334;
     display: flex;
     flex-direction: column; /* Stack form fields vertically */
     align-items: center;
     justify-content: flex-start; /* Align from the top */
-    border: 3px solid rgb(50, 160, 197);
+    border: 3px solid #303481;
     box-shadow: 15px 15px black;
     width: 45%;
     height: 75vh; /* Constrained height */

@@ -1,12 +1,15 @@
-<div class="container">
-  <div class="row signupRow">
-    <form
+<div class="container-full loginConntainer">
+  <div class="row">
+    <div class="col-lg-8">
+      
+    </div>
+    <div class="col-lg-4 signupRow">
+      <form
       class="loginForm"
       [formGroup]="loginForm"
       (ngSubmit)="onLoginSubmit()"
     >
-      <h1 class="mt-5">Login</h1>
-      <p class="mt-2">Login to continue</p>
+      <h1 class="mt-3">Login</h1>
 
       <mat-form-field
         appearance="outline"
@@ -49,7 +52,7 @@
       </mat-form-field>
 
       <button
-        class="submitButton button"
+        class="submitButton button mb-3"
         mat-stroked-button
         type="submit"
         [disabled]="!loginForm.valid"
@@ -57,5 +60,6 @@
         Login
       </button>
     </form>
+    </div>
   </div>
 </div>
